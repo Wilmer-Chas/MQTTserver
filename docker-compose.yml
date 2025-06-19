@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  mqtt:
+    image: eclipse-mosquitto:latest
+    ports:
+      - "1883:1883"      # MQTT port
+      - "9001:9001"      # WebSocket port (optional)
+    volumes:
+      - ./mosquitto/config:/mosquitto/config   # optional custom config
+
+  backend:
+    build: ./backend       # Dockerfile in backend folder
+    ports:
+      - "5000:5000"        # Your backend API port
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/mydb
+      - MQTT_BROKER=mqtt://mqtt:1883
+    depends_on:
+      - db
+      - mqtt
+
+  frontend:
+    build: ./frontend      # Dockerfile in frontend folder
+    ports:
+      - "3000:3000"        # Frontend dev server port
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

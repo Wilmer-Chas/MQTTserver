@@ -5,3 +5,5 @@
 .vscode/ipch
 .vscode
 main.exe
+.env
+fake.env
