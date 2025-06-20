@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../database'); // adjust path as needed
+const { pool } = require('../database');
 
-
+// exposes API routes for frontend to use, connecting directly to the postgres database
 
 router.get('/sensor-data', async (req, res) => {
   const { type, device_id, start, end, limit = 100 } = req.query;
@@ -22,12 +22,12 @@ router.get('/sensor-data', async (req, res) => {
   }
 
   if (start) {
-    conditions.push(`timestamp >= $${counter++}`);
+    conditions.push(`received_at >= $${counter++}`);
     values.push(start);
   }
 
   if (end) {
-    conditions.push(`timestamp <= $${counter++}`);
+    conditions.push(`received_at <= $${counter++}`);
     values.push(end);
   }
 
@@ -37,11 +37,11 @@ router.get('/sensor-data', async (req, res) => {
     query += ' WHERE ' + conditions.join(' AND ');
   }
 
-  query += ` ORDER BY timestamp DESC LIMIT $${counter}`;
+  query += ` ORDER BY received_at DESC LIMIT $${counter}`;
   values.push(limit);
 
   try {
-    const { rows } = await db.query(query, values);
+    const { rows } = await pool.query(query, values)
     res.json(rows);
   } catch (err) {
     console.error('[ERROR] /sensor-data:', err.message);
