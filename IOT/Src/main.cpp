@@ -36,6 +36,7 @@ void loop() {
     
     String jsonMockData = getMockSensorData();
     Serial.println("Publishing: " + jsonMockData);
-    publishToMQTT(jsonMockData);
+    publishToMQTT("myname/project1/sensor1", jsonMockData);
+
   }
 }
