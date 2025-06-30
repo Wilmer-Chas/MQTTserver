@@ -9,7 +9,7 @@ router.get('/sensor-data', async (req, res) => {
 
   let conditions = [];
   let values = [];
-  let counter = 1;
+  let counter = 1;           
 
   if (type) {
     conditions.push(`sensor_key = $${counter++}`);
