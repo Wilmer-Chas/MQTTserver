@@ -1,4 +1,4 @@
-const { insertSensorData } = require('../database'); // adjust the path if needed
+const { insertSensorData } = require('../src/database'); // adjust the path if needed
 
 async function seed() {
   try {
