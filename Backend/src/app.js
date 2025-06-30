@@ -1,4 +1,4 @@
-const mqttListener = require('./mqtt/listener');
+const mqttListener = require('./integrations/mqttClient');
 const { testDatabaseConnection } = require('./config/db');
 
 
