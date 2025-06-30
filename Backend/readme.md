@@ -55,22 +55,22 @@ This is the typical structure for an env file that connects to the backend
 
 
 ## 📁 Project Structure
-├── node_modules/           # Installed dependencies (auto-managed)
-├── scripts/                # Custom utility or setup scripts
-├── tests/                  # Test files (unit/integration)
-├── Dockerfile              # Docker setup for containerizing the app
-├── package.json            # Project metadata and dependencies
-├── package-lock.json       # Exact version lock for dependencies
-├── README.md               # Project documentation
+- node_modules/           # Installed dependencies (auto-managed)
+- scripts/                # Custom utility or setup scripts
+- tests/                  # Test files (unit/integration)
+- Dockerfile              # Docker setup for containerizing the app
+- package.json            # Project metadata and dependencies
+- package-lock.json       # Exact version lock for dependencies
+- README.md               # Project documentation
 
-└── src/                    # Application source code
-    ├── config/             # Environment and application configuration
-    ├── controllers/        # Request handlers for various routes
-    ├── integrations/       # External service integrations (e.g., MQTT, DB)
-    ├── middleware/         # Custom Express middleware (e.g., logging, error handling)
-    ├── models/             # Database models or schemas
-    ├── routes/             # Route definitions and API endpoints
-    ├── services/           # Business logic and core service functions
-    ├── utils/              # Utility/helper functions
-    ├── app.js              # Express app configuration
-    └── server.js           # Application entry point (starts server)
+- src/                    # Application source code
+  - config/               # Environment and application configuration
+  - controllers/          # Request handlers for various routes
+  - integrations/         # External service integrations (e.g., MQTT, DB)
+  - middleware/           # Custom Express middleware (e.g., logging, error handling)
+  - models/               # Database models or schemas
+  - routes/               # Route definitions and API endpoints
+  - services/             # Business logic and core service functions
+  - utils/                # Utility/helper functions
+  - app.js                # Express app configuration
+  - server.js             # Application entry point (starts server)
