@@ -1,0 +1,1 @@
+Recommend adding Middleware to adapt to different sensors and API requests
