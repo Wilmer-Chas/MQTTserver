@@ -23,7 +23,7 @@ docker build -t backend-server .
 
 # Run the container, mapping port 5000 and passing env variables
 docker run --env-file .env -p 5000:5000 backend-server
-```
+``` 
 
 ## 🚀 Features
 
